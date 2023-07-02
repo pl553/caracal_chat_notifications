@@ -1,0 +1,40 @@
+{
+
+  "manifest_version": 2,
+  "name": "Caracal chat notifications",
+  "version": "1.0",
+
+  "description": "Adds notifications",
+
+  "icons": {
+    "48": "icons/caracal-48.png"
+  },
+  
+  "browser_action": {
+    "default_icon": "icons/caracal-32.png",
+    "default_title": "Caracal chat notifications",
+    "default_popup": "popup/caracal_chat_notifications_settings.html"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*.caracal.club/*"],
+      "js": ["caracal_chat_notifications.js"]
+    }],
+    
+  "permissions": [
+        "storage",
+        "notifications",
+        "*://*.caracal.club/*"
+  ],
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "caracal_chat_notifications@example.com",
+      "strict_min_version": "42.0"
+    }
+  }
+
+
+}
+

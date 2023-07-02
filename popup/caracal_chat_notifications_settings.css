@@ -1,0 +1,12 @@
+html, body {
+  width: 300px;
+}
+
+.hidden {
+  display: none;
+}
+
+#popup_content {
+    width: 100%;
+}
+
