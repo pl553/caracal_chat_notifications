@@ -1,7 +1,5 @@
 function sendRestoreOptionsMessage(tabs) {
-    console.log(tabs)
     for (tab of tabs) {
-        console.log(tab.id)
         browser.tabs.sendMessage(tab.id, {
             command: "caracal_chat_notifications_restore_settings"
         });

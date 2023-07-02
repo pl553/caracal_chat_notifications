@@ -27,8 +27,6 @@ var observerConfig = { childList: true };
 
 var latestMessageObserver = null
 
-var last_notification_time = Date.now() - 10000;
-
 function onNewMessage(mutations) {
   for (mutation of mutations) {
     for (node of mutation.addedNodes) {
@@ -47,14 +45,10 @@ function onNewMessage(mutations) {
   if (window.caracal_notification_settings.tab_flash && document.hidden) {
     PageTitleNotification.On("!!! New message !!!")
   }
-  if (window.caracal_notification_settings.desktop_notification && document.hidden && Date.now() - last_notification_time >= 10000) {
-    browser.notifications.create("caracal_notification", {
-      type: "basic",
-      iconUrl: browser.extension.getURL("icons/caracal-48.png"),
-      title: "New message",
-      message: "New message"
-    });
-    last_notification_time = Date.now()
+  console.log(window.caracal_notification_settings.desktop_notification)
+  if (window.caracal_notification_settings.desktop_notification && document.hidden) {
+    let sending = browser.runtime.sendMessage("displayNotification")
+    sending.then()
   }
 }
 
